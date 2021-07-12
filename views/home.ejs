@@ -1,0 +1,27 @@
+
+<!-- // using ejs templating  -->
+<%- include('partials/header'); -%>
+
+<h1>Home</h1>
+
+<p> <%= homeStartingContent %>  </p>
+
+<!-- use array.forEach() to cycle through the blogPosts array, printing the blogPost.title <h1> and printing the truncated blogPost.content while adding a href at the end, that dynamically links to the /posts/:postName route -->
+<%  blogPosts.forEach(function (blogPost) {  %>
+
+    <h1> <%= blogPost.title %>  </h1>
+
+    <p> 
+        <%= _.truncate(blogPost.content, {"length": 103, "omission": '...'}) %>
+        <a href= "/blogposts/<%= _.kebabCase(blogPost.title) %>"> Read More </a>
+    </p>
+    
+    
+
+<%  } );  %>
+
+
+
+
+
+<%- include('partials/footer'); -%>
